@@ -1,0 +1,86 @@
+extends layout
+
+
+block content 
+    doctype html
+    head
+      title Form
+      script(type='text/javascript' src='/javascripts/mailer.js' defer='defer')
+      
+      //to define L for the map
+      script(src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js')
+      
+    body
+      h1#h1_forms Create a New Contact
+      
+      form#form(action="thanks" method="post")
+        div
+          label(for='prefix')
+          input#MR(type='radio' name='Prefix' value='Mr.')
+          | Mr. 
+          input#MRS(type='radio' name='Prefix' value='Mrs.')
+          | Mrs. 
+          input#MS(type='radio' name='Prefix' value='Ms.')
+          | Ms. 
+          input#DR(type='radio' name='Prefix' value='Dr.')
+          | Dr.
+
+        div
+          label(for='first') First Name:
+          input#first(type='text' name='First' required)
+              
+          label(for='last') Last Name:
+          input#last(type='text' name='Last' required)
+
+        div
+          label(for='street') Street:
+          input#street(type='text' name='Street' required)
+              
+          label(for='city') City:
+          input#city(type='text' name='City' required)
+
+        div
+          label(for='state') State:
+          select#selection(name='State' required)
+            option#default(selected='selected' value='') Select
+            option#NJ(value='NJ') NJ
+            option#NY(value='NY') NY
+            option#PA(value='PA') PA
+            option#CT(value='CT') CT
+              
+          label(for='zip') Zip:
+          input#zip(type='text' name='Zip' required)
+        
+        div
+          label(for='phone') Phone:
+          input#phone(type='text' name='Phone' required)
+
+        div
+          label(for='email') Email:
+          input#email(type='text' name='Email' required)
+
+        div
+          label(for='contactMethod')
+          | How may we contact you? 
+          input#Mail(type='checkbox' name='mail' value='Mail') 
+          | Mail 
+          input#Phone(type='checkbox' name='phone' value='Phone')
+          | Phone 
+          input#Email(type='checkbox' name='email' value='Email')
+          | Email 
+          input#Any(type='checkbox' name='any' value='Any')
+          | Any
+            
+        div 
+          label(for='coordinate')
+          input#latitude(type='hidden' name='Latitude' value='')
+          input#longitude(type='hidden' name='Longitude' value='')
+            
+        div
+          button(type='button' onclick='process_address("street", "city", "selection", "zip", "form")') Submit
+
+        
+
+
+
+

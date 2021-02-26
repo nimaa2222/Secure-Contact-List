@@ -1,0 +1,89 @@
+extends layout
+
+
+block content 
+    doctype html
+    head
+    title Edit Contact
+
+    script(type='text/javascript' src='/javascripts/mailer.js' defer='defer')
+    script(src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js')
+
+    body
+        h1#h1_forms Edit Contact Information
+
+        form#edited_form(action="thanks_update" method="post")
+            
+            div
+                label(for='prefix')
+                input#MR(type='radio' name='Prefix' value='Mr.' checked=contact.prefix=='Mr.')
+                | Mr. 
+                input#MRS(type='radio' name='Prefix' value='Mrs.' checked=contact.prefix=='Mrs.')
+                | Mrs. 
+                input#MS(type='radio' name='Prefix' value='Ms.' checked=contact.prefix=='Ms.')
+                | Ms. 
+                input#DR(type='radio' name='Prefix' value='Dr.' checked=contact.prefix=='Dr.')
+                | Dr. 
+                
+            div
+                label(for='first') First Name:
+                input#first(type='text' name='First' required='' value=contact.first_name)
+                    
+                label(for='last') Last Name:
+                input#last(type='text' name='Last' required='' value=contact.last_name)
+                
+            div
+                label(for='street') Street:
+                input#street(type='text' name='Street' required='' value=contact.street)
+                    
+                label(for='city') City:
+                input#city(type='text' name='City' required='' value=contact.city)
+                
+            div
+                label(for='state') State:
+                select#selection(name='State' required='')
+                    option#default(value='') Select
+                    option#NJ(value='NJ' selected=contact.state=='NJ') NJ
+                    option#NY(value='NY' selected=contact.state=='NY') NY
+                    option#PA(value='PA' selected=contact.state=='PA') PA
+                    option#CT(value='CT' selected=contact.state=='CT') CT
+                    
+                label(for='zip') Zip:
+                input#zip(type='text' name='Zip' required='' value=contact.zip)
+                
+            div
+                label(for='phone') Phone:
+                input#phone(type='text' name='Phone' required='' value=contact.phone)
+                
+            div
+                label(for='email') Email:
+                input#email(type='text' name='Email' required='' value=contact.email)
+                
+            div
+                label(for='contactMethod')
+                |  How may we contact you? 
+                input#Mail(type='checkbox' name='mail' value='Mail' checked=contact.contact_with_mail)
+                | Mail 
+                input#Phone(type='checkbox' name='phone' value='Phone' checked=contact.contact_with_phone)
+                | Phone 
+                input#Email(type='checkbox' name='email' value='Email' checked=contact.contact_with_email)
+                | Email 
+                input#Any(type='checkbox' name='any' value='Any' checked=contact.any_preferance)
+                | Any
+                
+            div 
+                label(for='coordinate')
+                input#latitude(type='hidden' name='Latitude' value='')
+                input#longitude(type='hidden' name='Longitude' value='')
+                
+            div 
+                input#contact_id(type='hidden' name='Contact_ID' value=contact._id)
+                
+            div
+                button(type='button' onclick='process_address("street", "city", "selection", "zip", "edited_form")') Save
+
+        
+
+
+
+

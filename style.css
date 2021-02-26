@@ -1,0 +1,175 @@
+body{
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  margin-top: 8%;
+  background-image: url('../images/background.jpg');
+  color:white;
+  text-align:center;
+}
+
+input, select{
+  margin-top: 1.5%;
+  margin-bottom: 1%;
+  margin-right: 3%;
+  margin-left: 0.5%;
+  color:rgb(22, 32, 77);
+  padding-right:1%;
+  padding-left:0.5%;
+}
+
+a{
+  color:#00FFFF;
+}
+
+#form, #edited_form{
+  width: 55%;
+  border: 5px solid white;
+  padding: 1%;
+  margin: 1%;
+  display:inline-block;
+}
+
+#username{
+  margin-bottom:1%;
+}
+
+#login{
+  width: 29%;
+  border: 3px solid white;
+  padding: 1%;
+  margin: 1%;
+  display:inline-block;
+}
+
+span{
+  display:inline-block;
+  padding:10%;
+  border:5px solid white;
+}
+
+#user_pass{
+  padding:2%;
+  width:10%
+}
+
+button {
+  color:black;
+  background-color: lightblue;
+}
+
+
+h1{
+  text-align: center;
+  margin-bottom: 3%;
+
+	padding:0.2;
+	background-color:#00344c;
+}
+
+
+section{
+  text-align: center;
+  padding:1%;
+
+  
+  color: #333333;
+  padding: 5px 6px 2px 6px;
+  border: 1px solid #CCCCCC;
+  
+
+  margin-left:40%;
+  margin-right:40%;
+}
+ 
+#map{ 
+  position:absolute; 
+  width:50%;
+  height:50%; 
+}
+
+#map_position{
+  display: block;
+  margin-top:1.5%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  
+}
+
+th, td, table{
+  text-align: center;
+  color: white;
+  padding:0.5em;
+  margin: 0 auto;       
+}
+
+th, td{
+  border: 1px solid lightblue;
+}
+
+.outside {
+  border:none;
+}
+
+#delete{
+  background-color: red;
+  color:white;
+  border: black;
+}
+
+tr:hover .inside{
+  background-color: rgb(21, 114, 145);
+}
+
+#table_header:hover{
+  background-color: transparent;
+}
+
+#logout{
+  float:right;
+  padding:0.4em
+}
+
+#create_contact{
+  font: 17px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.notify{
+  margin-top: 20%;
+  background-color: transparent;
+}
+
+img{
+  width:10%;
+  height:10%;
+  margin-bottom: 1.5%;
+}
+
+@media only screen and (max-height: 700px) {
+  #map_position {
+      display: none;
+  }
+}
+
+@media only screen and (max-width: 1026px) {
+  table, #logout{
+    font: 8px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+}
+@media only screen and (max-width: 1026px) {
+  #h1_contacts {
+    font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+}
+
+@media only screen and (max-width: 1026px) {
+  #login {
+    width:50%;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  #form, #edited_form, #h1_forms{
+    font: 7px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+}

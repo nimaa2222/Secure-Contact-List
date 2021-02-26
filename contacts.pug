@@ -1,0 +1,70 @@
+extends layout
+
+
+block content 
+    doctype html
+
+    - var contact_num = 0;
+
+    head
+    title Contacts List
+    
+    meta(charset='UTF-8')
+    meta(name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js')
+    link(href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet')
+    
+    script(type='text/javascript' src='/javascripts/map_contacts.js' defer='defer')
+    
+    body(onload='init_geocoding()')
+
+        div#logout 
+            form(action="logout", method = "get")
+                button(type="submit") Log out
+        h1#h1_contacts Contacts List
+        
+        input#num_contacts(type='hidden' name='contact_num' value=contacts.length)
+        
+        table
+            thead
+                tr#table_header
+                    th Full Name
+                    th Address
+                    th Email
+                    th Phone
+                    th Contact Method
+
+            tbody
+                each contact in contacts 
+                    tr(onclick='zoom_in(id)' id=contact.coordinate)
+                        
+                        td.inside #{contact.prefix} #{contact.first_name} #{contact.last_name}
+                        td.inside #{contact.street}, #{contact.city}, #{contact.state} #{contact.zip}
+                        td.inside #{contact.email}
+                        td.inside #{contact.phone} 
+                        td.inside #{contact.contact_methods}
+                        
+                        input#index(type='hidden' name='index' value=contact_num)
+
+                        input(type='hidden' name='lat' value=contact.coordinate[0] id=contact_num)
+                        - contact_num++;
+                        input(type='hidden' name='lng' value=contact.coordinate[1] id=contact_num)
+                        - contact_num++;
+
+                        - var update_link = 'update' + contact._id;
+                        - var delete_link = 'delete' + contact._id;
+                        
+                        td.outside
+                                a(href=update_link) Update 
+                            
+                        td.outside
+                            form(action=delete_link method="get" id="delete_form")
+                                button#delete(type='submit') Delete
+        div#create_contact
+            br
+            a(href='mailer') Create a New Contact
+    
+        div#map_position
+            #map
+        
